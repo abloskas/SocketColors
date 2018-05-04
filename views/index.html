@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Socket Colors</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js</a>"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+        $(document). ready(function (){
+            var socket = io(); 
+            socket.on('clr', function(data){
+                $('body').css("background-color", data.color);
+            });
+            $('.btn').click(function(){
+                socket.emit('btn_click', {color: $(this).attr('data-color')});
+            });
+    });
+    </script>
+</head>
+<body>
+        <button class="btn" data-color="green">green</button>
+        <button class="btn" data-color="blue">blue</button>
+        <button class="btn" data-color="pink">pink</button>
+</body>
+</html>
